@@ -13,17 +13,19 @@ def random_walk_matrix_power(start, states, n):
     """Random walk using matrix power"""
     return start @ np.linalg.matrix_power(states, n)
 
+# starting state
 start = np.array([0, 1, 0])
-
+# transition matrix
 states = np.array([
     [0.2, 0.6, 0.2],
     [0.3, 0, 0.7],
     [0.5, 0, 0.5]
 ])
-
+#number of walks
 n = 100_000_000
-runs = 10000
 
+# number of runs
+runs = 10000
 dur_random_walk_matrix_power = Timer("random_walk_matrix_power(start, states, n)", globals=globals()).timeit(number=runs)
 print(f"{random_walk_matrix_power/runs = }")
 
