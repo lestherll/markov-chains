@@ -15,6 +15,23 @@ function random_walk_matrix_power(start, states, n)
 start = [0 1]
 end
 
+# random walk until stationary state
+# this assumes that there exists a stationary state
+function get_stationary_state(start, states)
+    π = start
+    prev = start
+    n = 1
+    while true
+      π *= states
+      if π != prev
+        prev = π
+      else
+        return n, π
+      end
+      n += 1
+    end
+  end
+
 # starting state
 start = [0 1 0]
 # transition matrix
@@ -26,5 +43,6 @@ states = [
 # number of walks
 n = 100000000
 
-@benchmark random_walk_matrix_power(start, states, n)
-@benchmark random_walk_for_loop(start, states, n)
+# @benchmark random_walk_matrix_power(start, states, n)
+# @benchmark random_walk_for_loop(start, states, n)
+println(get_stationary_state(start, states))
