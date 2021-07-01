@@ -19,30 +19,27 @@ end
 # this assumes that there exists a stationary state
 function get_stationary_state(start, states)
     π = start
+    prev = 0
+    n = 0
+    while π != prev
+      prev = π
+      π *= states
+      n += 1
+    end
+    return n, π
+  end
+
+function get_stationary_state2(start, states)
+    π = start
     prev = start
     n = 1
     while true
-      π *= states
-      if π != prev
-        prev = π
-      else
-        return n, π
-      end
-      n += 1
+        π *= states
+        if π != prev
+            prev = π
+        else
+            return n, π
+        end
+    n += 1
     end
-  end
-
-# starting state
-start = [0 1 0]
-# transition matrix
-states = [
-    0.2 0.6 0.2
-    0.3 0.0 0.7
-    0.5 0.0 0.5
-]
-# number of walks
-n = 100000000
-
-# @benchmark random_walk_matrix_power(start, states, n)
-# @benchmark random_walk_for_loop(start, states, n)
-println(get_stationary_state(start, states))
+end
