@@ -12,7 +12,6 @@ end
 # random walk using matrix power
 function random_walk_matrix_power(start, states, n)
     return start * states ^ n
-start = [0 1]
 end
 
 # random walk until stationary state
