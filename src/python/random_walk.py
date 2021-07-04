@@ -27,7 +27,7 @@ n = 100_000_000
 # number of runs
 runs = 10000
 dur_random_walk_matrix_power = Timer("random_walk_matrix_power(start, states, n)", globals=globals()).timeit(number=runs)
-print(f"{random_walk_matrix_power/runs = }")
+print(f"{dur_random_walk_matrix_power/runs = }")
 
 dur_random_walk_for_loop = Timer("random_walk_for_loop(start, states, n)", globals=globals()).timeit(number=1)
 print(f"{dur_random_walk_for_loop = }")
